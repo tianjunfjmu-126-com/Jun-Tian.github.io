@@ -109,23 +109,16 @@
     display: block;
 }
 
-        @media (max-width: 650px) {
-            .profile-header {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            .name-title {
-                text-align: center;
-            }
-            .badge-group {
-                justify-content: center;
-            }
-            .profile-image {
-                flex-basis: auto;
-                margin-top: 0.2rem;
-            }
-        }
+@media (max-width: 650px) {
+    .profile-image {
+        max-width: 300px;
+    }
+    .profile-image img {
+        max-width: 100%;
+        height: auto;
+        border-width: 2px;
+    }
+}
     
         /* 名片信息 */
         .info-card {
