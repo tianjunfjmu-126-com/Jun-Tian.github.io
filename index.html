@@ -90,36 +90,23 @@
         }
     
         /* 头像/图片区域 */
-       .profile-image {
-    flex: 0 0 270px;
+      .profile-image {
+    flex: 0 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0.5rem;
+    max-width: 400px;
 }
+
 .profile-image img {
-    width: 250px;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 5px solid #e9f0f7;
+    max-width: 100%;
+    height: auto;
+    border-radius: 0;          /* 移除圆角 */
+    border: 3px solid #e9f0f7;
     box-shadow: 0 8px 25px rgba(0, 20, 40, 0.10);
     background: #f0f5fb;
-    transition: all 0.2s;
-}
-.profile-image .placeholder-text {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    background: #e2ecf5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #3f688b;
-    font-weight: 500;
-    font-size: 1rem;
-    border: 3px dashed #b6cedf;
-    text-align: center;
-    padding: 0.5rem;
+    display: block;
 }
 
         @media (max-width: 650px) {
@@ -324,11 +311,12 @@
         <div class="profile-image">
             <!-- 图片占位：替换 src 为自己的图片 -->
             <div class="image-wrapper">
-               <img src="https://raw.githubusercontent.com/tianjunfjmu-126-com/Jun-Tian.github.io/main/tian-1.webp"
-     alt="田俊教授照片"
-     id="profilePhoto"
-     style="width:250px; height:250px; object-fit:cover; border-radius:50%; border:5px solid #e9f0f7; background:#f0f5fb;">
-                <div class="img-caption">📸 田俊 教授</div>
+               <div class="profile-image">
+    <img src="https://raw.githubusercontent.com/tianjunfjmu-126-com/Jun-Tian.github.io/main/tian-1.webp"
+         alt="田俊教授照片"
+         id="profilePhoto">
+    <div class="img-caption">📸 田俊 教授</div>
+</div>
             </div>
         </div>
     </div>
