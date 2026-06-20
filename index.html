@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>田俊 · 流行病与卫生统计学 · 福建医科大学</title>
+    <!-- 学术风格字体与干净布局 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f6f9fc;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 2rem 1.5rem;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.08), 0 4px 18px rgba(0,0,0,0.02);
+            padding: 2.5rem 2.8rem;
+            transition: all 0.2s ease;
+        }
+        @media (max-width: 700px) {
+            .container {
+                padding: 1.8rem 1.2rem;
+            }
+        }
+
+        /* 头部区域：姓名 + 头衔 + 图片 */
+        .profile-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #eef2f6;
+            padding-bottom: 1.8rem;
+            margin-bottom: 2rem;
+            gap: 1.5rem;
+        }
+        .name-title {
+            flex: 2 1 300px;
+        }
+        .name-title h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            color: #0b2b4a;
+            line-height: 1.2;
+            margin-bottom: 0.3rem;
+        }
+        .name-title .title-role {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #2c5b7c;
+            background: #e6f0f9;
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            margin-top: 0.2rem;
+        }
+        .badge-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1rem;
+            margin-top: 0.5rem;
+        }
+        .badge {
+            background: #f1f5f9;
+            padding: 0.25rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #1e4a6b;
+            border: 1px solid #dce4ec;
+        }
+        .badge.highlight {
+            background: #d6e7f5;
+            border-color: #9bbdd9;
+            color: #0e3a5a;
+        }
+    
+        /* 头像/图片区域 */
+        .profile-image {
+            flex: 0 0 160px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .profile-image img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #e9f0f7;
+            box-shadow: 0 8px 18px rgba(0, 20, 40, 0.08);
+            background: #f0f5fb;
+            transition: all 0.2s;
+        }
+        .profile-image .placeholder-text {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: #e2ecf5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #3f688b;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border: 3px dashed #b6cedf;
+            text-align: center;
+            padding: 0.5rem;
+        }
+        @media (max-width: 650px) {
+            .profile-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .name-title {
+                text-align: center;
+            }
+            .badge-group {
+                justify-content: center;
+            }
+            .profile-image {
+                flex-basis: auto;
+                margin-top: 0.2rem;
+            }
+        }
+    
+        /* 名片信息 */
+        .info-card {
+            display: grid;
+            grid-template-columns: 1fr 2.2fr;
+            gap: 0.6rem 1.5rem;
+            background: #fafcfe;
+            padding: 1.2rem 1.6rem;
+            border-radius: 18px;
+            border: 1px solid #e9edf2;
+            margin: 1.5rem 0 2rem 0;
+            font-size: 0.98rem;
+        }
+        .info-card .label {
+            font-weight: 600;
+            color: #334e68;
+            opacity: 0.8;
+        }
+        .info-card .value {
+            color: #1a2f44;
+        }
+    
+        /* section 通用 */
+        .section {
+            margin-top: 2.2rem;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0b2b4a;
+            letter-spacing: -0.01em;
+            border-left: 6px solid #2e7ea1;
+            padding-left: 1rem;
+            margin-bottom: 1.2rem;
+        }
+        .section-sub {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #1d4765;
+            margin: 1.5rem 0 0.6rem 0;
+        }
+    
+        p {
+            margin-bottom: 0.8rem;
+            color: #1f3a51;
+        }
+        ul, .paper-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        ul li, .paper-list li {
+            position: relative;
+            padding-left: 1.6rem;
+            margin-bottom: 0.4rem;
+        }
+        ul li::before {
+            content: "•";
+            color: #2e7ea1;
+            font-weight: 700;
+            position: absolute;
+            left: 0.2rem;
+        }
+        .paper-list li {
+            padding-left: 2rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .paper-list li::before {
+            content: "📄";
+            position: absolute;
+            left: 0;
+            opacity: 0.7;
+        }
+    
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem 1.8rem;
+        }
+        @media (max-width: 650px) {
+            .grid-2col {
+                grid-template-columns: 1fr;
+            }
+        }
+    
+        .highlight-box {
+            background: #f2f8fe;
+            padding: 0.8rem 1.6rem;
+            border-radius: 18px;
+            border-left: 5px solid #3c87ae;
+            margin: 1.2rem 0;
+        }
+    
+        hr {
+            border: none;
+            border-top: 1px solid #dee5ed;
+            margin: 1.8rem 0;
+        }
+    
+        .footer-meta {
+            margin-top: 2.5rem;
+            font-size: 0.85rem;
+            color: #5b6f83;
+            border-top: 1px solid #e2e9f1;
+            padding-top: 1.5rem;
+            text-align: center;
+        }
+        .footer-meta a {
+            color: #2a6790;
+            text-decoration: none;
+            border-bottom: 1px dotted #b3c9db;
+        }
+    
+        .tag {
+            background: #eef4fa;
+            padding: 0.1rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #1b4b6a;
+            display: inline-block;
+            margin-right: 0.3rem;
+        }
+    
+        .ref-list {
+            font-size: 0.9rem;
+            color: #1f3f59;
+            list-style: none;
+            padding-left: 0;
+            columns: 2 260px;
+            column-gap: 2rem;
+        }
+        .ref-list li {
+            margin-bottom: 0.3rem;
+            padding-left: 1.6rem;
+            position: relative;
+            break-inside: avoid;
+        }
+        .ref-list li::before {
+            content: "[";
+            color: #3c7fa0;
+            font-weight: 500;
+            position: absolute;
+            left: 0;
+        }
+        .ref-list li::after {
+            content: "]";
+            color: #3c7fa0;
+            font-weight: 500;
+            position: absolute;
+            left: 0.9rem;
+        }
+    
+        /* 新增：图注说明 */
+        .img-caption {
+            font-size: 0.8rem;
+            color: #3d627f;
+            text-align: center;
+            margin-top: 0.3rem;
+        }
+        .image-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- 头部：包含图片区域 -->
+    <div class="profile-header">
+        <div class="name-title">
+            <h1>田俊</h1>
+            <div class="title-role">教授 · 硕士生导师 · 系主任</div>
+            <div class="badge-group" style="margin-top: 0.8rem;">
+                <span class="badge highlight">福建医科大学 公共卫生学院</span>
+                <span class="badge">流行病与卫生统计学系</span>
+                <span class="badge">中国现场统计研究会 理事</span>
+            </div>
+        </div>
+        <div class="profile-image">
+            <!-- 图片占位：替换 src 为自己的图片 -->
+            <div class="image-wrapper">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Crect width='150' height='150' fill='%23d9e6f2'/%3E%3Ctext x='75' y='80' font-family='Inter, sans-serif' font-size='14' fill='%233b688b' text-anchor='middle'%3E📷 田俊%3C/text%3E%3Ctext x='75' y='100' font-family='Inter, sans-serif' font-size='11' fill='%235b7f9e' text-anchor='middle'%3E(照片占位)%3C/text%3E%3C/svg%3E"
+                     alt="田俊教授照片 (占位图)"
+                     id="profilePhoto"
+                     style="width:150px; height:150px; object-fit:cover; border-radius:50%; border:4px solid #e9f0f7; background:#f0f5fb;">
+                <div class="img-caption">📸 田俊 教授</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 信息卡 -->
+    <div class="info-card">
+        <span class="label">🏫 毕业院校</span><span class="value">福州大学 (计算数学, 1982)</span>
+        <span class="label">📅 出生日期</span><span class="value">1956年4月</span>
+        <span class="label">👩‍🏫 职称</span><span class="value">教授 (1998破格) · 硕士生导师</span>
+        <span class="label">🏆 荣誉</span><span class="value">福建省教学名师 · 省高校中青年优秀骨干教师</span>
+        <span class="label">📈 研究聚焦</span><span class="value">头颈部肿瘤放疗敏感性 · 营养指数模型 · 心理因素</span>
+    </div>
+    
+    <!-- 简介 -->
+    <div class="section">
+        <div class="section-title">👩‍🔬 学术简介</div>
+        <p><strong>田俊</strong>，福建医科大学公共卫生学院流行病与卫生统计学系主任、教授、硕士生导师。长期从事卫生统计学教学与恶性肿瘤预后研究，聚焦头颈部肿瘤放疗敏感性、营养指数模型构建及心理因素对治疗效果的影响。</p>
+        <p>主持国家自然科学基金、福建省自然科学基金等项目6项，发表论文75篇 (SCI收录24篇、EI收录7篇)，参编教材4部。主导开发多维疲劳量表和心理弹性量表中文版验证，建立鼻咽癌患者营养评价模型，研究成果发表于 <em>Current Oncology</em>、<em>中国卫生统计</em> 等期刊。</p>
+        <div class="highlight-box">
+            <strong>📌 代表性项目：</strong> “胃癌患者生存质量影响因素研究” (线性结构模型, 423例患者) · 国家自然科学基金 “心理及营养因素在肿瘤治疗和康复中的作用”
+        </div>
+    </div>
+    
+    <!-- 两列: 学术任职 + 成果速览 -->
+    <div class="grid-2col" style="margin-top: 0.5rem;">
+        <div>
+            <div class="section-sub">📋 学术任职</div>
+            <ul>
+                <li>中国现场统计研究会生物医学统计学会 理事</li>
+                <li>中国卫生统计学会福建省分会 常务理事</li>
+                <li>福建医科大学 教学名师 (2012)</li>
+                <li>校青年骨干教师 (1997) · 省高校中青年优秀骨干教师 (1998)</li>
+            </ul>
+        </div>
+        <div>
+            <div class="section-sub">🏅 主要荣誉</div>
+            <ul>
+                <li>2019年度 福建省科学技术进步二等奖</li>
+                <li>连续三年 福建医科大学优秀教师</li>
+                <li>1998年 破格晋升教授</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- 论文与成果 -->
+    <div class="section">
+        <div class="section-title">📄 代表性论文 (2010–2017)</div>
+        <ul class="paper-list" style="columns: 1; column-gap: 2rem;">
+            <li><strong>Validation of the Chinese version of Multidimensional Fatigue Inventory-20</strong> <span style="color:#2d5f82;">(Supportive Care in Cancer, 2012, SCI)</span></li>
+            <li><strong>Validation of the Chinese version of the Resilience Scale and its cutoff score</strong> <span style="color:#2d5f82;">(Support Care in Cancer, 2013, SCI)</span></li>
+            <li><strong>Prevalence of anxiety and depression and their risk factors in Chinese cancer patients</strong> <span style="color:#2d5f82;">(Supportive Care in Cancer, 2014, SCI)</span></li>
+            <li><strong>Effect of chemoradiotherapy on nutrition status of patients with nasopharyngeal cancer</strong> <span style="color:#2d5f82;">(Nutrition and Cancer, 2016, SCI)</span></li>
+            <li><strong>Modified‑Nutrition Index is a significant prognostic factor for overall survival</strong> <span style="color:#2d5f82;">(Nutrition and Cancer, 2017, SCI)</span></li>
+            <li><strong>鼻咽癌患者放疗期间营养指数模型构建及影响因素分析</strong> <span style="color:#2d5f82;">(中国卫生统计, 2015)</span></li>
+            <li><strong>应用ROC曲线确定心理弹性量表的诊断界值研究</strong> <span style="color:#2d5f82;">(数学的实践与认识, 2013)</span></li>
+            <li><strong>多维度疲劳量表应用于肿瘤患者的信度和效度验证</strong> <span style="color:#2d5f82;">(中华护理杂志, 2012)</span></li>
+        </ul>
+        <p style="margin-top: 0.5rem; font-size: 0.95rem;">📌 更多论文见于 <em>Current Oncology</em>, <em>World Journal of Gastroenterology</em>, <em>Gynecologic and Obstetric Investigation</em> 等期刊。通信作者标记 *。</p>
+    </div>
+    
+    <!-- 科研项目 / 专著 -->
+    <div class="section">
+        <div class="section-title">📚 科研项目 & 著作</div>
+        <div class="grid-2col">
+            <div>
+                <div class="section-sub">项目 (主持)</div>
+                <ul>
+                    <li>国家自然科学基金 (心理及营养因素在肿瘤治疗和康复中的作用)</li>
+                    <li>福建省自然科学基金 (胃癌患者生存时间及生存质量) </li>
+                    <li>福建省自然科学基金 (头颈部肿瘤放疗敏感性与营养) </li>
+                    <li>福建省教育厅专项 (生态环境与胃癌关系) </li>
+                </ul>
+            </div>
+            <div>
+                <div class="section-sub">专著 & 教材</div>
+                <ul>
+                    <li>出版学术专著 1 部</li>
+                    <li>参编学术著作 1 部</li>
+                    <li>副主编及参编教材 4 部</li>
+                    <li>发表论文 75 篇 (SCI 24篇, EI 7篇)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 荣誉与统计方法 -->
+    <div style="background: #f3f8fd; border-radius: 20px; padding: 0.8rem 1.8rem; margin: 1.8rem 0;">
+        <p style="margin: 0.3rem 0; font-weight: 500; color: #1a4c6e;">🏆 2019年度福建省科学技术进步二等奖 · “胃癌患者生存质量影响因素研究” 等成果</p>
+        <p style="margin: 0.3rem 0; font-size: 0.95rem; color: #1f4d6b;">💡 多水平模型、线性结构模型、ROC曲线等统计方法在肿瘤预后中的深入应用</p>
+    </div>
+    
+    <!-- 参考文献 -->
+    <div class="section">
+        <div class="section-title">📖 参考资料</div>
+        <ul class="ref-list">
+            <li>福建医科大学公共卫生学院导师介绍</li>
+            <li>190例宫颈癌患者临床病理特征及预后分析</li>
+            <li>心理因素对鼻咽癌治疗影响的研究</li>
+            <li>多维疲劳量表中文版验证 (Supportive Care in Cancer)</li>
+            <li>心理弹性量表中文版及截断值研究</li>
+            <li>鼻咽癌患者营养指数模型 (中国卫生统计 2015,2016)</li>
+            <li>福建省人民政府 2019年度科学技术奖励决定</li>
+            <li>福州大学机构库 · 应用线性结构模型分析</li>
+        </ul>
+    </div>
+
+</div>
+
+<!-- 提示：替换图片的简单脚本（仅控制台提示） -->
+<script>
+    (function() {
+        const img = document.getElementById('profilePhoto');
+        if (img) {
+            // 如果图片加载失败（例如占位svg被替换后），保持优雅
+            console.log('💡 如需更换照片，请将 #profilePhoto 的 src 替换为实际图片URL (建议1:1比例)');
+        }
+    })();
+</script>
+
+</body>
+</html>
