@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>田俊 · 流行病与卫生统计学 · 福建医科大学</title>
+    <title>福建医科大学公共卫生学院教授</title>
     <!-- 学术风格字体与干净布局 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,19 +16,65 @@
         }
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f6f9fc;
+            /* ——— ★ 真正的布纹背景 ★ ——— */
+            background-color: #e8e4de;
+            background-image: 
+                /* 经线（垂直纹理） */
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 3px,
+                    rgba(200, 190, 180, 0.15) 3px,
+                    rgba(200, 190, 180, 0.15) 4px
+                ),
+                /* 纬线（水平纹理） */
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 5px,
+                    rgba(200, 190, 180, 0.10) 5px,
+                    rgba(200, 190, 180, 0.10) 6px
+                ),
+                /* 斜纹交叉（布纹核心） */
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 6px,
+                    rgba(190, 180, 170, 0.06) 6px,
+                    rgba(190, 180, 170, 0.06) 7px
+                ),
+                repeating-linear-gradient(
+                    -45deg,
+                    transparent,
+                    transparent 6px,
+                    rgba(190, 180, 170, 0.06) 6px,
+                    rgba(190, 180, 170, 0.06) 7px
+                ),
+                /* 细微噪点增加织物感 */
+                repeating-conic-gradient(
+                    rgba(180, 170, 160, 0.02) 0% 25%,
+                    transparent 0% 50%
+                );
+            background-size: 
+                4px 100%,
+                100% 6px,
+                12px 12px,
+                12px 12px,
+                8px 8px;
             color: #1e293b;
             line-height: 1.6;
             padding: 2rem 1.5rem;
+            min-height: 100vh;
         }
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            background: white;
+            background: rgba(255, 255, 255, 0.96);
             border-radius: 24px;
-            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.08), 0 4px 18px rgba(0,0,0,0.02);
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.12), 0 4px 18px rgba(0,0,0,0.04);
             padding: 2.5rem 2.8rem;
             transition: all 0.2s ease;
+            backdrop-filter: blur(2px);
         }
         @media (max-width: 700px) {
             .container {
@@ -293,11 +339,12 @@
     <div class="profile-header">
         <div class="name-title">
             <h1>福建医科大学教授 田俊</h1>
+            <p>&nbsp;</p>
             <!-- <div class="title-role">教授 · 硕士生导师 · 系主任</div> -->
             <div class="badge-group" style="margin-top: 0.8rem;">
                 <span class="badge highlight">福建医科大学 公共卫生学院</span>
-                <span class="badge">流行病与卫生统计学系</span>
-                <span class="badge">中国现场统计研究会</span>
+                <span class="badge highlight">流行病与卫生统计学系</span>
+                <span class="badge highlight">中国现场统计研究会</span>
             </div>
         </div>
         <div class="profile-image">
@@ -351,15 +398,11 @@
     </div>
 
 <!-- 居中展示的图片 -->
-<div style="display: flex; justify-content: center; margin: 30px 0 10px 0;">
-    <img src="./tian-2.webp"
-         alt="学术研究相关图片"
-         style="width: 50%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-</div>
+<div style="display: flex; justify-content: center; margin: 30px 0 10px 0;"><img src="img/tian-2.jpg" width="416" height="397" alt=""/><img src="img/tj_01.jpg" width="511" height="398" alt=""/></div>
 
     <!-- 论文与成果 -->
     <div class="section">
-        <div class="section-title">📄 代表性学术论文</div>
+        <div class="section-title">📃 代表性学术论文</div>
         <ul class="paper-list" style="columns: 1; column-gap: 2rem;">   
 <li><strong>Effects of nutritional and psychological status in gastrointestinal cancer patients on tolerance of treatment</strong> <span style="color:#2d5f82;">(World Journal of Gastroenterology, 2007, SCI)</span></li>
 <li><strong>The Effects of Psychological Status of the Patients With Digestive System Cancers on Prognosis of the Disease</strong> <span style="color:#2d5f82;">(Cancer Nursing, 2009, SCI)</span></li>
@@ -386,10 +429,10 @@
     
     <!-- 科研项目 / 专著 -->
     <div class="section">
-        <div class="section-title">📚 科研项目 & 著作</div>
+        <div class="section-title">🏫 科研项目 & 著作</div>
         <div class="grid-2col">
             <div>
-                <div class="section-sub">项目 (主持)</div>
+                <div class="section-sub"> 🔬 科研项目 (主持)</div>
                 <ul>
                     <li>国家自然科学基金 (心理及营养因素在肿瘤治疗和康复中的作用)</li>
                     <li>福建省自然科学基金 (胃癌患者生存时间及生存质量) </li>
@@ -398,7 +441,7 @@
                 </ul>
             </div>
             <div>
-                <div class="section-sub">专著 & 教材</div>
+                <div class="section-sub">📚 专著 & 教材</div>
                 <ul>
                     <li>出版学术专著 1 部</li>
                     <li>参编学术著作 1 部</li>
